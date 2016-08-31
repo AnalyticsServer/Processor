@@ -10,6 +10,7 @@ import com.arctro.database.DatabaseConnectionPool;
 
 public class AnalyticsProcessor {
 	public int CURRENT_ARCHIVE;
+	public int INDEX_INCREMENT;
 	public String INDEX_FILENAME;
 	public String[] INDEX_FORMATS;
 	
@@ -21,6 +22,7 @@ public class AnalyticsProcessor {
 		CURRENT_ARCHIVE = (int)(Timestamp.valueOf(getConfig("CURRENT_ARCHIVE")).getTime()/1000);
 		INDEX_FILENAME = getConfig("INDEX_FILENAME");
 		INDEX_FORMATS = getConfig("INDEX_FORMATS").split(",");
+		INDEX_INCREMENT = Integer.parseInt(getConfig("INDEX_INCREMENT"));
 	}
 	
 	/**

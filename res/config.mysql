@@ -23,7 +23,14 @@ INSERT IGNORE INTO `config` (`key`, `value`) VALUES
 	-- %y is the start year, %m is start month, %d is
 	-- the start day, and %t is the start unix timestamp
 	-- -------------------------------------------------
-	('INDEX_FILENAME', '/%l/%c/%y/%t');
+	('INDEX_FILENAME', '/%l/%c/%y/%t'),
+	
+	-- -------------------------------------------------
+	-- This is how much the archive/index increments. It
+	-- must be the smallest common factor of all the
+	-- index sizes.
+	-- -------------------------------------------------
+	('INDEX_INCREMENT', '86400');
 
 -- -----------------------------------------------------
 -- Index Configuration
