@@ -30,7 +30,12 @@ INSERT IGNORE INTO `config` (`key`, `value`) VALUES
 	-- must be the smallest common factor of all the
 	-- index sizes.
 	-- -------------------------------------------------
-	('INDEX_INCREMENT', '86400');
+	('INDEX_INCREMENT', '86400'),
+	
+	-- -------------------------------------------------
+	-- This is the group size of the index increment
+	-- -------------------------------------------------
+	('INDEX_INCREMENT_GS', '30');
 
 -- -----------------------------------------------------
 -- Index Configuration
