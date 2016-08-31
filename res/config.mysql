@@ -1,0 +1,45 @@
+-- -----------------------------------------------------
+-- General Configuration
+-- -----------------------------------------------------
+INSERT IGNORE INTO `config` (`key`, `value`) VALUES
+
+	-- -------------------------------------------------
+	-- The current timestamp of beginning the active 
+	-- analytics. This should start at the beginning of 
+	-- the largest time unit (i.e if your archiving by
+	-- year, it should start at YYYY-01-01 00:00:00
+	-- -------------------------------------------------
+	('CURRENT_ARCHIVE', DATE_FORMAT(NOW() ,'%Y-%m-01 00:00:00')),
+	
+	-- -------------------------------------------------
+	-- The formats to store the index. CSV and JSON
+	-- are the supported formats.
+	-- -------------------------------------------------
+	('INDEX_FORMATS', 'csv,json'),
+	
+	-- -------------------------------------------------
+	-- How to format the filename/path of the index file
+	-- %l is the duration of the index, %c is category,
+	-- %y is the start year, %m is start month, %d is
+	-- the start day, and %t is the start unix timestamp
+	-- -------------------------------------------------
+	('INDEX_FILENAME', '/%l/%c/%y/%t');
+
+-- -----------------------------------------------------
+-- Index Configuration
+-- Index size refers to the length of time (in seconds)
+-- that the count grouping covers
+-- Group size refers to the number grouped together when
+-- they are archived
+-- -----------------------------------------------------
+INSERT IGNORE INTO `indexes` (`index_size`, `group_size`) VALUES
+
+	-- -------------------------------------------------
+	-- Day index
+	-- -------------------------------------------------
+	(86400, 30),
+	
+	-- -------------------------------------------------
+	-- Month index
+	-- -------------------------------------------------
+	(2592000, 12);
